@@ -16,8 +16,10 @@ function [] = plotStyle(aspectRatio,plotSize,colorScheme,lineWidth,fontWeight,fo
 %       'fhd' - 1920 px for x
 %       'uhd' - 3840 px for x
 %   colorSchemes - Default is 1 (Both color schemes are colorblind friendly
-%       1 - Color Scheme 1
-%       2 - Color Scheme 2
+%       1 - Color Scheme 1 (MATLAB Default)
+%       2 - Color Scheme 2 (4 colors, colorblind friendly)
+%       3 - Color Scheme 3 (4 colors, colorblind friendly)
+%       4 - Color Scheme 4 (4 colors)
 %   lineWidth - Default is 1.5
 %       Any positive number will work
 %   fontWeight - Default is 22
@@ -88,7 +90,7 @@ switch aspectRatio
         warning('Unsupported aspect ratio.')
 end
 
-if colorScheme ~= 1 && colorScheme ~= 2
+if colorScheme ~= 1 && colorScheme ~= 2 && colorScheme ~= 3 && colorScheme ~= 4
        warning('Unsupported color scheme.')
 end
 
@@ -127,36 +129,36 @@ set(0,'DefaultAxesFontName',fontName);
 set(0,'defaultfigurecolor',[1 1 1])
 set(0,'DefaultLineMarkerSize',fontWeight);
 
-if colorScheme == 1
-    colvect=[...
-        245,121,58;...      orange 
-        169,90,161;...      purple
-        133,192,249;...     sky blue
-        15,32,128]/255;     %royal blue
+
+switch colorScheme
+    case 2
+        colvect=[...
+            245,121,58;...      orange 
+            169,90,161;...      purple
+            133,192,249;...     sky blue
+            15,32,128]/255;     %royal blue
+        set(0,'DefaultAxesColorOrder',colvect);
+    case 3
+        colvect=[...
+           96,26,74;...       purple  
+           238,68,47;...      red orange
+           99,172,190;...     blue
+           230,230,9]/255;    %yellow
+       set(0,'DefaultAxesColorOrder',colvect);
+    case 4
+        colvect=[...
+            45,73,121;...       blue    
+            204,34,6;...        red
+            0,127.5,0;...       green
+            117,51,183;...      purple    
+            190,153,32;...      yellow
+            62,151,190;...      light blue
+            240,78,0;...        orange
+            198,9,151;...       pink
+            ]/255;  % K&M-set, light blue instead of aqua
+        set(0,'DefaultAxesColorOrder',colvect);
+    otherwise
 end
 
-if colorScheme == 2
-    colvect=[...
-       96,26,74;...       purple  
-       238,68,47;...      red orange
-       99,172,190;...     blue
-       230,230,9]/255;    %yellow
-end
-
-
-set(0,'DefaultAxesColorOrder',[0,0,0;1 0 0])
+% set(0,'DefaultAxesColorOrder',[0,0,0;1 0 0])
 set(0,'DefaultAxesLineStyleOrder',{'-','--',':','-.'})
-set(0,'DefaultAxesColorOrder',colvect);
-
-% Test Plotting Code
-% t = 1:0.01:5;
-% labels = [];
-% for n = 1:16
-%     x(n,:) = t.*sqrt(n);
-% end
-% plot(t,x)
-% grid on
-% xlabel('x')
-% ylabel('f(x)')
-% title('The Plot')
-% legend(labels,'NumColumns',4,'Location','NorthWest')
