@@ -15,11 +15,11 @@ function [] = plotStyle(aspectRatio,plotSize,colorScheme,lineWidth,fontWeight,fo
 %       'hd' - 1366 px for x
 %       'fhd' - 1920 px for x
 %       'uhd' - 3840 px for x
-%   colorSchemes - Default is 1 (Both color schemes are colorblind friendly
-%       1 - Color Scheme 1 (MATLAB Default)
+%   colorSchemes - Default is 1 
+%       1 - Color Scheme 1 (MATLAB Default, 7 colors)
 %       2 - Color Scheme 2 (4 colors, colorblind friendly)
 %       3 - Color Scheme 3 (4 colors, colorblind friendly)
-%       4 - Color Scheme 4 (4 colors)
+%       4 - Color Scheme 4 (8 colors)
 %   lineWidth - Default is 1.5
 %       Any positive number will work
 %   fontWeight - Default is 22
@@ -131,14 +131,25 @@ set(0,'DefaultLineMarkerSize',fontWeight);
 
 
 switch colorScheme
-    case 2
+    case 1 % MATLAB Default
+        colvect=[...
+            0,0.4470,0.7410;...         blue    
+            0.8500,0.3250,0.0980;...    orange
+            0.9290,0.6940,0.1250;...    yellow
+            0.4940,0.1840,0.5560;...    purple    
+            0.4660,0.6740,0.1880;...    green
+            0.3010,0.7450,0.9330;...    light blue
+            0.6350,0.0780,0.1840];      %red
+
+        set(0,'DefaultAxesColorOrder',colvect);
+    case 2 % Colorblind 1
         colvect=[...
             245,121,58;...      orange 
             169,90,161;...      purple
             133,192,249;...     sky blue
             15,32,128]/255;     %royal blue
         set(0,'DefaultAxesColorOrder',colvect);
-    case 3
+    case 3 % Colorblind 2
         colvect=[...
            96,26,74;...       purple  
            238,68,47;...      red orange
