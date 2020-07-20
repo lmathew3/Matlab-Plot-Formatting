@@ -7,7 +7,7 @@ function [] = plotStyle(aspectRatio,plotSize,colorScheme,lineWidth,fontWeight,fo
 %       'tall' - 3:4 aspect ratio (x/y = 3/4)
 %       'square' - Square aspect ratio (x/y = 1)
 %       'standard' - 4:3 aspect ratio (x/y = 4/3)
-%       'widescreen' - Square aspect ratio (x/y = 16/9)
+%       'widescreen' - 16:9 aspect ratio (x/y = 16/9)
 %   plotSize - Default is 'medium' 1000 px for x
 %       'small' - 500 px for x
 %       'medium' - 1000 px for x
