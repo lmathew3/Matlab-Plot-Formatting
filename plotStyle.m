@@ -2,6 +2,7 @@
 % Function sets default plot styles for plotting
 % Authors: Logan Mathews, additions by Mark Anderson
 % Function Overhaul: 18 Jun 2021 - LM
+% Copyright (C) 2021 - Logan T Mathews and Mark C Anderson
 % ARGUMENTS:
 %   'StandardStyle' - Default is set to 'none'
 %   'AspectRatio'
